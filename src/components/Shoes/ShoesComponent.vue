@@ -1,41 +1,46 @@
 <template>
   <ContainerComponent>
     <div class="boxTitle">
-      <h1 class="title">Os melhores em um só lugar</h1>
-      <p class="subTitle">A marca Jordan na JordanShoes é a escolha certa para <br> os amantes de sneakers que buscam
-        estilo e conforto.</p>
+      <h1 class="title">{{ title }}</h1>
+      <p class="subTitle">{{ description }}</p>
     </div>
     <div class="containerShoes">
-      <CardComponent v-for="shoe in shoes" :key="shoe.id" :title="shoe.title" :description="shoe.subTitle"
-        :price="shoe.price" :image="shoe.img" :idShoes="shoe.id" />
+      <div v-for="shoe in shoes" :key="shoe.id">
+        <CardComponent :title="shoe.title" :description="shoe.subTitle" :price="shoe.price" :image="shoe.img"
+          :idShoes="shoe.id" />
+      </div>
     </div>
   </ContainerComponent>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import CardComponent from '../Card/CardComponent.vue';
 import ContainerComponent from '../Container/ContainerComponent.vue';
-import shoes from '../../assets/mock/shoes.ts';
+import shoes from '../../assets/mock/shoes';
 
-export default {
+export default defineComponent({
   name: 'ShoesComponent',
   components: {
-    ContainerComponent,
-    CardComponent
+    CardComponent,
+    ContainerComponent
   },
   data() {
     return {
-      shoes
-    }
+      shoes: shoes
+    };
+  },
+  props: {
+    title: String,
+    description: String
   }
-}
+});
 </script>
 
 <style scoped>
 .boxTitle {
   text-align: center;
   margin-top: 2rem;
-  margin-top: 80px;
 }
 
 .title {
