@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="divImg">
-      <img :src="image" alt="" class="img">
+      <img :src="image" alt="Imagem" class="img">
     </div>
     <div class="info" :key="idShoes">
       <h1 class="title">{{ title }}</h1>
@@ -48,7 +48,7 @@ export default {
 }
 
 .divImg {
-  width: 384px;
+  max-width: 384px;
   height: 200px;
   display: flex;
   justify-content: center;
